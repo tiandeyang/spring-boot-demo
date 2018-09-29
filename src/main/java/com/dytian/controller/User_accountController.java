@@ -99,6 +99,8 @@ public class User_accountController {
     @SysLog("aspect 日志测试")
     public Object aspecttest(@RequestParam String name) {
 
+        System.out.println("what happend to you");
+
         return name;
     }
 
