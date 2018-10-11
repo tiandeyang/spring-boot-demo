@@ -6,7 +6,9 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.dytian.aspect.SysLog;
 import com.dytian.cache.DataObject;
 import com.dytian.entity.User_account;
+import com.dytian.rabbitmq.Book;
 import com.dytian.service.IUser_accountService;
+import com.dytian.spring.dytianboot.config.RabbitConfig;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.pagehelper.PageHelper;
@@ -16,6 +18,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.nutz.json.Json;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -56,7 +59,6 @@ public class User_accountController {
     @GetMapping("/hello")
     @ResponseBody
     public Object hello() {
-
         return iUser_accountService.getAllAccounts();
     }
 
@@ -165,13 +167,25 @@ public class User_accountController {
     @Autowired
     private AmqpTemplate amqpTemplate;
 
+    @Autowired
+    RabbitTemplate rabbitTemplate;
+
+
+
 
     @ApiOperation(value = "rabbit 发送消息")
     @GetMapping("/rabbit/send/{message}")
     @ResponseBody
     public String rabbitTest(@PathVariable("message") String message){
       //  log.info("send message====="+message);
-        amqpTemplate.convertAndSend("dytian",message);
+     //   amqpTemplate.convertAndSend("dytian",message);
+
+        Book book = new Book();
+        book.setId("1");
+        book.setName("一起来学Spring Boot");
+        this.rabbitTemplate.convertAndSend(RabbitConfig.DEFAULT_BOOK_QUEUE, book);
+        this.rabbitTemplate.convertAndSend(RabbitConfig.MANUAL_BOOK_QUEUE, book);
+
         return "发送成功！";
     }
 
@@ -188,7 +202,6 @@ public class User_accountController {
     @GetMapping("/thread/pool")
     @ResponseBody
     public String threadpool(){
-        //  log.info("send message====="+message);
         Thread worker = new Thread(new Runnable() {
             @Override
             public void run() {

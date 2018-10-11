@@ -34,6 +34,7 @@ class MyCircularQueue {
             queue[tail] = value;
         }
         capacity++;
+        System.out.println("zzz");
         return true;
     }
     

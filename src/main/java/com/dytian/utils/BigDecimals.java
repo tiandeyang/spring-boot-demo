@@ -50,14 +50,12 @@ public class BigDecimals<E> {
         return new BigDecimals();
     }
 
-
     public static void main(String[] args) {
 
         BigDecimal a = new BigDecimal("20.");
         BigDecimal b = new BigDecimal("20.2");
         Integer a1 = 100;
         Integer a2 = 100;
-      //  boolean b2 = BigDecimals.Instance().compareTo(a, "<=", b);
 
         boolean b3 = BigDecimals.Instance().compareTo(a1, "<", a2);
 

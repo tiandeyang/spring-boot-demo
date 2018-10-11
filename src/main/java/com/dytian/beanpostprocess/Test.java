@@ -8,7 +8,6 @@ public class Test {
 
     public static void main(String[] args) {
 
-
        /* 我们可以看到Bean的生命周期：
         1、解析xml文件，解析出BeanDefinition
         2、Spring容器创建BeanFactoryPostProcessor实例
@@ -21,8 +20,6 @@ public class Test {
         9、调用InitializingBean的afterPropertiesSet方法
         10、调用BeanPostProcessor的postProcessAfterInitialization方法
         11、容器销毁的时候调用DisposableBean的destroy方法*/
-
-
 
         FileSystemXmlApplicationContext context = new FileSystemXmlApplicationContext("classpath:springxmls/beans.xml");
         TestBean testBean = (TestBean) context.getBean("testBean");

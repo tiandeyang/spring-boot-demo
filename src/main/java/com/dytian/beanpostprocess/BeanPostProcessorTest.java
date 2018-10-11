@@ -13,10 +13,10 @@ public class BeanPostProcessorTest implements BeanPostProcessor {
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 
         System.out.println(beanName + "-->" + "BeanPostProcessorTest->postProcessBeforeInitialization");
-        TestBean bean1 = (TestBean) bean;
-        bean1.setAge(19);
-        int age = bean1.getAge();
-        System.out.println("age==before====="+age);
+       // TestBean bean1 = (TestBean) bean;
+//        bean1.setAge(19);
+//        int age = bean1.getAge();
+//        System.out.println("age==before====="+age);
         return bean;
     }
 
@@ -25,10 +25,10 @@ public class BeanPostProcessorTest implements BeanPostProcessor {
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 
         System.out.println(beanName + "-->" + "BeanPostProcessorTest->postProcessAfterInitialization");
-        TestBean bean1 = (TestBean) bean;
-        bean1.setAge(20);
-        int age = bean1.getAge();
-        System.out.println("age=after==="+age);
+//        TestBean bean1 = (TestBean) bean;
+//        bean1.setAge(20);
+//        int age = bean1.getAge();
+//        System.out.println("age=after==="+age);
         return bean;
     }
 }
