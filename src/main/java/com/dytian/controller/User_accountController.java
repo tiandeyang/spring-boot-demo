@@ -19,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.nutz.json.Json;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.AbstractJavaTypeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -94,26 +96,14 @@ public class User_accountController {
     }
 
 
-
     @ApiOperation(value = "Aop aspect 测试")
     @GetMapping("/aspect/test")
     @ResponseBody
     @SysLog("aspect 日志测试")
     public Object aspecttest(@RequestParam String name) {
-
         System.out.println("what happend to you");
-
         return name;
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -189,8 +179,27 @@ public class User_accountController {
         return "发送成功！";
     }
 
+    @ApiOperation(value = "rabbit 延迟消息 发送消息")
+    @GetMapping("/rabbit/send")
+    @ResponseBody
+    public String rabbitDelayTest(){
 
+        Book book = new Book();
+        book.setId("1");
+        book.setName("一起来学Spring Boot");
+        // 添加延时队列
+        this.rabbitTemplate.convertAndSend(RabbitConfig.REGISTER_DELAY_EXCHANGE, RabbitConfig.DELAY_ROUTING_KEY, book, message -> {
+            // TODO 第一句是可要可不要,根据自己需要自行处理
+            message.getMessageProperties().setHeader(AbstractJavaTypeMapper.DEFAULT_CONTENT_CLASSID_FIELD_NAME, Book.class.getName());
+            // TODO 如果配置了 params.put("x-message-ttl", 5 * 1000); 那么这一句也可以省略,具体根据业务需要是声明 Queue 的时候就指定好延迟时间还是在发送自己控制时间
+            message.getMessageProperties().setExpiration(20 * 1000 + "");
+            return message;
+        });
+        log.info("[发送时间] - [{}]", LocalDateTime.now());
 
+        return "ok";
+
+    }
 
 
 
