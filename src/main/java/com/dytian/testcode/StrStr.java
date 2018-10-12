@@ -64,14 +64,6 @@ public class StrStr {
     }
 
 
-    public static void main(String[] args) {
 
-      /*  "mississippi"
-        "pi"*/
-
-        StrStr strStr = new StrStr();
-        int i = strStr.strStr("mississippi", "pi");
-        System.out.println(i);
-    }
 
 }
