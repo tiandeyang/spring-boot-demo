@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="beanPostProcessorTest" class="com.dytian.beanpostprocess.BeanPostProcessorTest"></bean>
+    <bean id="beanFactoryPostProcessorTest" class="com.dytian.beanpostprocess.BeanFactoryPostProcessorTest"></bean>
+
+    <bean id="testBean" class="com.dytian.beanpostprocess.TestBean">
+        <property name="name" value="丑星星"></property>
+        <property name="age" value="18"></property>
+    </bean>
+</beans>
