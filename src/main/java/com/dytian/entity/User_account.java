@@ -20,6 +20,7 @@ import java.io.Serializable;
 @TableName("user_account")
 public class User_account extends Model<User_account> {
 
+
     private static final long serialVersionUID = 1L;
 
     /**

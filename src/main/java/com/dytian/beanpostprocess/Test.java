@@ -21,10 +21,10 @@ public class Test {
         10、调用BeanPostProcessor的postProcessAfterInitialization方法
         11、容器销毁的时候调用DisposableBean的destroy方法*/
 
-        FileSystemXmlApplicationContext context = new FileSystemXmlApplicationContext("classpath:springxmls/beans.xml");
-        TestBean testBean = (TestBean) context.getBean("testBean");
-        System.out.println("testBean====="+Json.toJson(testBean));
-        context.close();
+     //   FileSystemXmlApplicationContext context = new FileSystemXmlApplicationContext("classpath:springxmls/beans.xml");
+    //    TestBean testBean = (TestBean) context.getBean("testBean");
+   //     System.out.println("testBean====="+Json.toJson(testBean));
+    //    context.close();
 
 
 

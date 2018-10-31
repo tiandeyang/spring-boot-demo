@@ -221,9 +221,7 @@ public class User_accountController {
         for (int i =0; i < 10 ;i++){
             consumeQueueThreadPool.execute(worker);
         }
-
         return "发送成功！";
-
     }
 
 
@@ -233,28 +231,21 @@ public class User_accountController {
     @GetMapping("/caffeine")
     @ResponseBody
     public String caffeine(){
-
         String key = "A";
-
         cache.put(key,DataObject.get("Data For A"));
-
      //   cache.invalidate(key);
         return "发送成功！";
-
     }
 
     @ApiOperation(value = "获取 Caffeine 缓存")
     @GetMapping("/caffeinefrom")
     @ResponseBody
     public String fromcaffeine(){
-
         String key = "A";
         DataObject dataObject = cache.get(key,  k -> DataObject.get("Data for A"));
         log.info(Json.toJson(dataObject));
-
         //   cache.invalidate(key);
         return "发送成功！";
-
     }
 
 
@@ -268,11 +259,7 @@ public class User_accountController {
     }
 
 
-    public static void main(String[] args) {
-        HashMap<String, String> mltmap = new HashMap<>(52);
-        mltmap.put("sdf","sdf");
 
-    }
 
 
 
