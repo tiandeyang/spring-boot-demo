@@ -1,7 +1,8 @@
 package com.dytian.rpc.order;
 
-import com.yixin.xv.weixin.rpc.IProductService;
-import com.yixin.xv.weixin.rpc.Product;
+
+import com.dytian.rpc.IProductService;
+import com.dytian.rpc.Product;
 
 public class ProductService implements IProductService {
     @Override
