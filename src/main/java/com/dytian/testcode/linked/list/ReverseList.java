@@ -18,8 +18,11 @@ public class ReverseList {
             pNode = pNext; //将pNode的下一个结点复制给pNode
         }
         return pReversedHead;
-
     }
+
+
+
+
 
 
     public static void main(String[] args) {
