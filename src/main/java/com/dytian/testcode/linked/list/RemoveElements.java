@@ -6,12 +6,14 @@ package com.dytian.testcode.linked.list;
 public class RemoveElements {
 
 
-/*    public ListNode removeElements(ListNode head, int val) {
+    public ListNode removeElements(ListNode head, int val) {
         ListNode cur = new ListNode(-1);
         ListNode dummpy = cur;
+
+        // 1 2 6 3 4 5 6
         while(head != null) {
             if(head.val == val) {
-                cur.next = head.next;
+                cur.next = null;
             }else {
                 cur.next = head;
                 cur = cur.next;
@@ -19,26 +21,26 @@ public class RemoveElements {
             head = head.next;
         }
         return dummpy.next;
-    }*/
-
-
-    public ListNode removeElements(ListNode head, int val) {
-
-        ListNode now = new ListNode(-1);
-        ListNode fir = head;
-        now.next = head;
-
-        while (fir != null){
-
-            int currVal = now.next.val;
-            if (currVal == val){
-                now.next = now.next.next;
-            }
-            fir = fir.next;
-        }
-
-        return now.next;
     }
+
+
+//    public ListNode removeElements(ListNode head, int val) {
+//
+//        ListNode now = new ListNode(-1);
+//        ListNode fir = head;
+//        ListNode dumpy = now;
+//        while (fir != null){
+//
+//            if (fir.val == val){
+//                now.next = fir.next;
+//            }else {
+//                now.next = head;
+//                now = now.next;
+//            }
+//            fir = fir.next;
+//        }
+//        return dumpy.next;
+//    }
 
 
 
