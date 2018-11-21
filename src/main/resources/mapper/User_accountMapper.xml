@@ -33,9 +33,86 @@
     </delete>
 
 
+    <select id="selectUserByName" parameterType="java.lang.String" >
+
+        select * from user_account
+        <where>
+            <if test="user_name != null" >
+              user_name = #{user_name}
+            </if>
+
+            <if test="user_email != null">
+               and user_email = #{user_email}
+            </if>
+        </where>
+
+<!--     <trim prefix="where" prefixOverrides="and | or">
+            <if test="username != null">
+                and username=#{username}
+            </if>
+            <if test="sex != null">
+                and sex=#{sex}
+            </if>
+
+            prefix：前缀　　　　　　
+　　          prefixoverride：去掉第一个and或者是or
+
+        </trim>-->
+
+        /*这个“where”标签会知道如果它包含的标签中有返回值的话，它就插入一个‘where’。此外，如果标签返回的内容是以AND 或OR 开头的，则它会剔除掉。*/
+    </select>
 
 
 
+<!--  choose 的用法
+ <select id="selectUserByChoose" resultType="com.ys.po.User" parameterType="com.ys.po.User">
+        select * from user
+        <where>
+            <choose>
+                <when test="id !='' and id != null">
+                    id=#{id}
+                </when>
+                <when test="username !='' and username != null">
+                    and username=#{username}
+                </when>
+                <otherwise>
+                    and sex=#{sex}
+                </otherwise>
+            </choose>
+        </where>
 
+        也就是说，这里我们有三个条件，id,username,sex，只能选择一个作为查询条件
+
+　　　　如果 id 不为空，那么查询语句为：select * from user where  id=?
+
+　　　　如果 id 为空，那么看username 是否为空，如果不为空，那么语句为 select * from user where  username=?;
+
+　　　　　　　　　　如果 username 为空，那么查询语句为 select * from user where sex=?
+
+    </select>-->
+
+
+<!--    &lt;!&ndash; 定义 sql 片段 &ndash;&gt;
+    <sql id="selectUserByUserNameAndSexSQL">
+        <if test="username != null and username != ''">
+            AND username = #{username}
+        </if>
+        <if test="sex != null and sex != ''">
+            AND sex = #{sex}
+        </if>
+    </sql>-->
+<!--
+    引用 sql 片段
+    <select id="selectUserByUsernameAndSex" resultType="user" parameterType="com.ys.po.User">
+        select * from user
+        <trim prefix="where" prefixOverrides="and | or">
+            &lt;!&ndash; 引用 sql 片段，如果refid 指定的不在本文件中，那么需要在前面加上 namespace &ndash;&gt;
+            <include refid="selectUserByUserNameAndSexSQL"></include>
+            &lt;!&ndash; 在这里还可以引用其他的 sql 片段 &ndash;&gt;
+        </trim>
+    </select>
+    　　注意：①、最好基于 单表来定义 sql 片段，提高片段的可重用性
+
+    　　　　　②、在 sql 片段中不要包括 where-->
 
 </mapper>

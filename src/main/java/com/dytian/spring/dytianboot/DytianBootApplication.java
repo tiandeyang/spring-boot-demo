@@ -13,6 +13,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +28,7 @@ import java.util.Properties;
 @PropertySource(value = "classpath:db.properties",encoding="utf-8")
 @MapperScan("com.dytian.mapper")
 @ComponentScan("com.dytian.*")
+@EnableRedisHttpSession
 public class DytianBootApplication {
 
 

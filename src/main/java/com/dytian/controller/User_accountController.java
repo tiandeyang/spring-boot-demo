@@ -154,6 +154,8 @@ public class User_accountController {
     }
 
 
+
+
     @Autowired
     private AmqpTemplate amqpTemplate;
 

@@ -41,5 +41,12 @@ public class User_accountServiceImpl extends ServiceImpl<User_accountMapper, Use
         baseMapper.deleteById(id);
     }
 
+    @Override
+    public User_account selectUserByName(String user_name, String user_email) {
+
+        return baseMapper.selectUserByName(user_name,user_email);
+
+    }
+
 
 }

@@ -25,4 +25,10 @@ public interface IUser_accountService extends IService<User_account> {
     void deleteById(Integer id);
 
 
+    User_account selectUserByName(String user_name,String user_email);
+
+
+
+
+
 }

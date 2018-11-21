@@ -20,10 +20,15 @@ public interface User_accountMapper extends BaseMapper<User_account> {
 
     List<User_account> getAllAccounts();
 
-
     List<User_account> getAllAccountsPage(Pagination pagination);
 
     void deleteById(Integer id);
+
+
+    User_account selectUserByName(String user_name, String user_email);
+
+
+
 
 
 
