@@ -43,8 +43,7 @@ public class DytianBootApplication {
     String dytian;
 
 
-    @Autowired
-    DbConfig dbConfig;
+
 
 
 
