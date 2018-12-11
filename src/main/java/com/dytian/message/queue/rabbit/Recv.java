@@ -10,7 +10,6 @@ public class Recv {
 
     public static void main(String[] args) throws IOException, TimeoutException {
 
-
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("localhost");
         Connection connection = connectionFactory.newConnection();
@@ -19,14 +18,11 @@ public class Recv {
         System.out.println("waiting from message   ");
 
         Consumer consumer = new DefaultConsumer(channel){
-
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope,
                                        AMQP.BasicProperties properties, byte[] body) throws IOException {
-
                String message = new String(body,"UTF-8");
                 System.out.println("received "+message);
-
             }
         };
         channel.basicConsume("hello",true,consumer);

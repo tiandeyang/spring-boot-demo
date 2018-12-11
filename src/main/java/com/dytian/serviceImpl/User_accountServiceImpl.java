@@ -1,12 +1,9 @@
 package com.dytian.serviceImpl;
 
-import com.baomidou.mybatisplus.plugins.Page;
 import com.dytian.entity.User_account;
 import com.dytian.mapper.User_accountMapper;
 import com.dytian.service.IUser_accountService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +21,7 @@ public class User_accountServiceImpl extends ServiceImpl<User_accountMapper, Use
 
     @Override
     public List<User_account> getAllAccounts() {
+
         return baseMapper.getAllAccounts();
     }
 

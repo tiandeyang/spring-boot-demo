@@ -39,7 +39,7 @@ public class RabbitConsumer {
         // TODO 如果手动ACK,消息会被监听消费,但是消息在队列中依旧存在,如果 未配置 acknowledge-mode 默认是会在消费完毕后自动ACK掉
         final long deliveryTag = message.getMessageProperties().getDeliveryTag();
         try {
-            log.info("[listenerAutoAck 监听的消息] - [{}]", Json.toJson(book));
+            log.info("[listenerAutoAck 111 监听的消息] - [{}]", Json.toJson(book));
             // TODO 通知 MQ 消息已被成功消费,可以ACK了
             channel.basicAck(deliveryTag, false);
         } catch (IOException e) {
@@ -54,7 +54,7 @@ public class RabbitConsumer {
 
     @RabbitListener(queues = {RabbitConfig.MANUAL_BOOK_QUEUE})
     public void listenerManualAck(Book book, Message message, Channel channel) {
-        log.info("[listenerManualAck 监听的消息] - [{}]", Json.toJson(book));
+        log.info("[listenerManualAck22 监听的消息] - [{}]", Json.toJson(book));
         try {
             // TODO 通知 MQ 消息已被成功消费,可以ACK了
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
@@ -65,7 +65,7 @@ public class RabbitConsumer {
 
     @RabbitListener(queues = {RabbitConfig.REGISTER_QUEUE_NAME})
     public void listenerDelayQueue(Book book, Message message, Channel channel) {
-        log.info("[listenerDelayQueue 监听的消息] - [消费时间] - [{}] - [{}]", LocalDateTime.now(), book.toString());
+        log.info("[listenerDelayQueue33 监听的消息] - [消费时间] - [{}] - [{}]", LocalDateTime.now(), book.toString());
         try {
             // TODO 通知 MQ 消息已被成功消费,可以ACK了
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
@@ -73,6 +73,13 @@ public class RabbitConsumer {
             // TODO 如果报错了,那么我们可以进行容错处理,比如转移当前消息进入其它队列
         }
     }
+
+
+//    通道和并发注意事项
+//
+//    避免在多个线程中共享通道，而是每个线程一个通道。
+//    通道中的一些操作可以并发执行，一些不行（比如可能会导致二次ack）
+//    为每一个publish创建一个channel也是不可取的，channel被设计为长连接，可以复用，创建太多影响性能。
 
 
 

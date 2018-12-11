@@ -31,6 +31,10 @@ public class MpGenerator {
         // 选择 freemarker 引擎，默认 Veloctiy
        // mpg.setTemplateEngine(new FreemarkerTemplateEngine());
 
+        String user_name = "root";
+        String pwd = "mysql@yuemee";
+        String url = "47.94.252.198";
+        String dbName = "yuemee";
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
@@ -62,10 +66,12 @@ public class MpGenerator {
                 return super.processTypeConvert(fieldType);
             }
         });
+
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("Dashayu");
-        dsc.setUrl("jdbc:mysql://pos.xvo2o.com:3306/goushuang?characterEncoding=utf8");
+        dsc.setUsername(user_name);
+        dsc.setPassword(pwd);
+        dsc.setUrl("jdbc:mysql://"+url+":3306/"+dbName+"?characterEncoding=utf8");
+
         mpg.setDataSource(dsc);
 
         // 策略配置
@@ -73,7 +79,7 @@ public class MpGenerator {
         // strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
         strategy.setTablePrefix(new String[]{"tb_", "tsys_"});// 此处可以修改为您的表前缀
      //   strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-         strategy.setInclude(new String[] { "user_account" }); // 需要生成的表
+         strategy.setInclude(new String[] { "jd_user","jd_user_info","user_finance","user_relation"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义实体父类
         // strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");
