@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
@@ -258,6 +259,8 @@ public class User_accountController {
     @GetMapping("/caffeinerem")
     @ResponseBody
     public String remcaffeine(){
+
+
         String key = "A";
            cache.invalidate(key);
         return "发送成功！";
