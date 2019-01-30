@@ -126,11 +126,13 @@ public class ThumbnailatorTest {
      * @throws IOException
      */
     private void test7() throws IOException {
+
         /**
          * outputFormat(图像格式)
          */
         Thumbnails.of("images/test.jpg").size(1280, 1024).outputFormat("png").toFile("C:/image_1280x1024.png");
         Thumbnails.of("images/test.jpg").size(1280, 1024).outputFormat("gif").toFile("C:/image_1280x1024.gif");
+
     }
 
     /**

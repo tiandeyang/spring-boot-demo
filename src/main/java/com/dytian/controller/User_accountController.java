@@ -12,6 +12,9 @@ import com.dytian.spring.dytianboot.config.RabbitConfig;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.pagehelper.PageHelper;
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -260,11 +263,24 @@ public class User_accountController {
     @ResponseBody
     public String remcaffeine(){
 
-
         String key = "A";
            cache.invalidate(key);
         return "发送成功！";
     }
+
+
+    @ApiOperation(value = "guava")
+    @GetMapping("/guava")
+    @ResponseBody
+    public String guava(){
+        String a = null;
+        Preconditions.checkNotNull(a);
+
+
+        return "发送成功！";
+    }
+
+
 
 
 
