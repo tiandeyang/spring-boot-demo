@@ -2,6 +2,7 @@ package com.dytian.netty.echo;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import org.nutz.json.Json;
 
 public class EchoServerHandler extends SimpleChannelInboundHandler<UnixTime> {
 
@@ -17,10 +18,9 @@ public class EchoServerHandler extends SimpleChannelInboundHandler<UnixTime> {
 //    }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, UnixTime unixTime) throws Exception {
-        System.out.println("sfaddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-        System.out.println(unixTime.getValue());
-
+    protected void channelRead0(ChannelHandlerContext ctx, UnixTime unixTime) throws Exception {
+        ctx.writeAndFlush(unixTime);
+        System.out.println(Json.toJson(unixTime));
     }
 
 
