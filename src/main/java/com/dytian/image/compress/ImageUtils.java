@@ -18,9 +18,13 @@ public class ImageUtils {
      */
 
 
-
-
+    /**
+     * jpg格式图片压缩效果是很好的  png 格式压缩效果很差,甚至起到了相反的作用；png 格式转换为 jpg，图片大小下降很多
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
+
 
 
 //        Thumbnails.of("D:\\logo.jpg")
