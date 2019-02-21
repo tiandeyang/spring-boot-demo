@@ -98,6 +98,7 @@ public class ThumbnailatorTest {
                 .outputQuality(0.8f).toFile("C:/image_watermark_center.jpg");
     }
 
+
     /**
      * 裁剪
      * 

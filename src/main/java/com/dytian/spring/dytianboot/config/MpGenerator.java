@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
+import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class MpGenerator {
        // mpg.setTemplateEngine(new FreemarkerTemplateEngine());
 
         String user_name = "root";
-        String pwd = "mysql@yuemee";
+        String pwd = "yuemee@456a";
         String url = "47.94.252.198";
         String dbName = "yuemee";
 
@@ -48,8 +49,8 @@ public class MpGenerator {
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         // gc.setMapperName("%sDao");
-        // gc.setXmlName("%sMapper");
-        // gc.setServiceName("MP%sService");
+       //  gc.setXmlName("%sMapper");
+      //   gc.setServiceName("MP%sService");
         // gc.setServiceImplName("%sServiceDiy");
         // gc.setControllerName("%sAction");
         mpg.setGlobalConfig(gc);
@@ -76,10 +77,11 @@ public class MpGenerator {
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
-        // strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
+         strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
         strategy.setTablePrefix(new String[]{"tb_", "tsys_"});// 此处可以修改为您的表前缀
-     //   strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-         strategy.setInclude(new String[] { "jd_user","jd_user_info","user_finance","user_relation"}); // 需要生成的表
+        strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
+     //    strategy.setInclude(new String[] { "jd_user","jd_user_info","user_finance","user_relation"}); // 需要生成的表
+         strategy.setInclude(new String[] { "jd_product_copy"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义实体父类
         // strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");
@@ -153,19 +155,18 @@ public class MpGenerator {
 
         // 自定义模板配置，可以 copy 源码 mybatis-plus/src/main/resources/templates 下面内容修改，
         // 放置自己项目的 src/main/resources/templates 目录下, 默认名称一下可以不配置，也可以自定义模板名称
-        // TemplateConfig tc = new TemplateConfig();
+         TemplateConfig tc = new TemplateConfig();
         // tc.setController("...");
-        // tc.setEntity("...");
-        // tc.setMapper("...");
-        // tc.setXml("...");
-        // tc.setService("...");
-        // tc.setServiceImpl("...");
-        // 如上任何一个模块如果设置 空 OR Null 将不生成该模块。
-        // mpg.setTemplate(tc);
+         tc.setEntity("/templates/entity.java.vm");
+     //    tc.setMapper("...");
+    //     tc.setXml("...");
+      //   tc.setService("...");
+    //     tc.setServiceImpl("...");
+    //     如上任何一个模块如果设置 空 OR Null 将不生成该模块。
+         mpg.setTemplate(tc);
 
         // 执行生成
         mpg.execute();
-
         // 打印注入设置【可无】
         System.err.println(mpg.getCfg().getMap().get("abc"));
     }

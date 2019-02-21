@@ -11,12 +11,6 @@ public class ImageUtils {
 
 
 
-    /**
-     *
-     * @param args
-     * @throws IOException
-     */
-
 
     /**
      * jpg格式图片压缩效果是很好的  png 格式压缩效果很差,甚至起到了相反的作用；png 格式转换为 jpg，图片大小下降很多
@@ -33,7 +27,6 @@ public class ImageUtils {
 //                .toFile("D:\\logo.jpg");
 
     //    Thumbnails.of("D:\\jidan.png").scale(1f).outputFormat("jpg").toFile("D:\\jidan4.jpg");
-
 
         //  同样的商品图片 一张有水印 一张没有水印 消费者会选择哪个商品下单
         Thumbnails.of("D:\\my.jpg").scale(1f).watermark(Positions.CENTER, ImageIO.read(new File("D:\\share.png")), 0.3f)

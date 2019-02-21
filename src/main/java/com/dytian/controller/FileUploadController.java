@@ -27,6 +27,7 @@ public class FileUploadController {
 
     private static final Logger log = LoggerFactory.getLogger(FileUploadController.class);
 
+
     @GetMapping("/index")
     public String index() {
         return "freemarker/index";
