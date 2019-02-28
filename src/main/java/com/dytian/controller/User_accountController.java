@@ -59,8 +59,11 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 @Api(tags = "用户API")
 public class User_accountController {
 
+
+
     @Autowired
     IUser_accountService iUser_accountService;
+
 
     @ApiOperation(value = "用户查询")
     @GetMapping("/hello")
@@ -82,6 +85,7 @@ public class User_accountController {
 
         Page<User_account> page = new Page<>(pageNumber,pageSize);
         return iUser_accountService.selectPage(page,where);
+
     }
 
     @ApiOperation(value = "数据更新")
@@ -275,8 +279,6 @@ public class User_accountController {
     public String guava(){
         String a = null;
         Preconditions.checkNotNull(a);
-
-
         return "发送成功！";
     }
 

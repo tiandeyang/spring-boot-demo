@@ -1,19 +1,23 @@
 package ${package.Entity};
 
+
+import java.math.BigDecimal;
+import java.util.Date;
+
 #if(${activeRecord})
-import java.io.Serializable;
+##import java.io.Serializable;
 
 #end
-#foreach($pkg in ${table.importPackages})
+#*#foreach($pkg in ${table.importPackages})
 import ${pkg};
-#end
+#end*#
 #if(${entityLombokModel})
 
-import com.baomidou.mybatisplus.annotations.Version;
+##import com.baomidou.mybatisplus.annotations.Version;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
+##import lombok.Data;
+##import lombok.EqualsAndHashCode;
+##import lombok.experimental.Accessors;
 #end
 
 /**
@@ -44,10 +48,10 @@ public class ${entity} implements Serializable {
 
 
 ## ----------  BEGIN 字段循环遍历  ----------
-#foreach($field in ${table.fields})
-	public static final String ${field.name} = "${field.name}";
+##foreach($field in ${table.fields})
+	##public static final String col_${field.name} = "${field.name}";
 
-#end
+##end
 ## ----------  END 字段循环遍历  ----------
 
 ## ----------  BEGIN 字段循环遍历  ----------
@@ -63,9 +67,9 @@ public class ${entity} implements Serializable {
 #if(${field.keyFlag})
 ## 主键
 #if(${field.keyIdentityFlag})
-	@TableId(value="${field.name}", type= IdType.AUTO)
+	##@TableId(value="${field.name}", type= IdType.AUTO)
 #elseif(${field.convert})
-    @TableId("${field.name}")
+ ##   @TableId("${field.name}")
 #end
 ## 普通字段
 #elseif(${field.fill})
@@ -86,7 +90,7 @@ public class ${entity} implements Serializable {
 #if(${logicDeleteFieldName}==${field.name})
     @TableLogic
 #end
-	private ${field.propertyType} ${field.propertyName};
+	private ${field.propertyType} ${field.name};
 #end
 ## ----------  END 字段循环遍历  ----------
 
@@ -102,16 +106,17 @@ public class ${entity} implements Serializable {
 #set($getprefix="get")
 #end
 
-	public ${field.propertyType} ${getprefix}${field.capitalName}() {
-		return ${field.propertyName};
+	public ${field.propertyType} ${getprefix}${field.name.substring(0,1).toUpperCase()}${field.name.substring(1)}() {
+		return ${field.name};
 	}
 
 #if(${entityBuilderModel})
-	public ${entity} set${field.capitalName}(${field.propertyType} ${field.propertyName}) {
+
+	public ${entity} set${field.name.substring(0,1).toUpperCase()}${field.name.substring(1)}(${field.propertyType} ${field.name}) {
 #else
-	public void set${field.capitalName}(${field.propertyType} ${field.propertyName}) {
+	public void set${field.name.substring(0,1).toUpperCase()}${field.name.substring(1)}(${field.propertyType} ${field.name}) {
 #end
-		this.${field.propertyName} = ${field.propertyName};
+		this.${field.name} = ${field.name};
 #if(${entityBuilderModel})
 		return this;
 #end
@@ -125,7 +130,7 @@ public class ${entity} implements Serializable {
 
 #end
 #end
-#if(${activeRecord})
+#*#if(${activeRecord})
 	@Override
 	protected Serializable pkVal() {
 #if(${keyPropertyName})
@@ -135,16 +140,16 @@ public class ${entity} implements Serializable {
 #end
 	}
 
-#end
+#end*#
 #if(!${entityLombokModel})
 	@Override
 	public String toString() {
 		return "${entity}{" +
 #foreach($field in ${table.fields})
 #if($!{velocityCount}==1)
-			"${field.propertyName}=" + ${field.propertyName} +
+			"${field.name}=" + ${field.name} +
 #else
-			", ${field.propertyName}=" + ${field.propertyName} +
+			", ${field.name}=" + ${field.name} +
 #end
 #end
 			"}";

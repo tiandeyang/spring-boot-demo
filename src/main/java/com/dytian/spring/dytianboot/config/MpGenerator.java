@@ -77,11 +77,19 @@ public class MpGenerator {
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
-         strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
+      //   strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
+
         strategy.setTablePrefix(new String[]{"tb_", "tsys_"});// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-     //    strategy.setInclude(new String[] { "jd_user","jd_user_info","user_finance","user_relation"}); // 需要生成的表
-         strategy.setInclude(new String[] { "jd_product_copy"}); // 需要生成的表
+        strategy.setDbColumnUnderline(true);
+        strategy.setEntityColumnConstant(true);
+     //   strategy.setCapitalMode(true);
+
+         strategy.setInclude(new String[] {"user_withdraw", "jd_user","jd_user_info","user_finance","user_relation","jd_view_record","user_bill"}); // 需要生成的表
+    //    strategy.setInclude(new String[] { "jd_view_record"}); // 需要生成的表
+
+
+       //  strategy.setInclude(new String[] { "jd_product_copy"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义实体父类
         // strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");
@@ -106,12 +114,13 @@ public class MpGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent("com");
-        pc.setModuleName("dytian");
+        pc.setModuleName("yuemee");
+
         pc.setController("controler");
-        pc.setEntity("entity");
-        pc.setMapper("mapper");
-        pc.setService("service");
-        pc.setServiceImpl("serviceImpl");
+        pc.setEntity("entity.user");
+        pc.setMapper("user.mapper");
+        pc.setService("user.service");
+        pc.setServiceImpl("user.service.imp");
         pc.setXml("mapperXml");
 
         mpg.setPackageInfo(pc);
@@ -158,6 +167,7 @@ public class MpGenerator {
          TemplateConfig tc = new TemplateConfig();
         // tc.setController("...");
          tc.setEntity("/templates/entity.java.vm");
+        tc.setXml("/templates/mapper.xml.vm");
      //    tc.setMapper("...");
     //     tc.setXml("...");
       //   tc.setService("...");

@@ -65,6 +65,7 @@ public class FileUploadController {
             map.put("fileSize", file.getSize() + "");
             results.add(map);
         }
+
         return results;
     }
 
