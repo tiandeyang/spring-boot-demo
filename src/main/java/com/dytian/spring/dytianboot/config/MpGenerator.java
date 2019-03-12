@@ -84,10 +84,10 @@ public class MpGenerator {
         strategy.setDbColumnUnderline(true);
         strategy.setEntityColumnConstant(true);
      //   strategy.setCapitalMode(true);
-
-         strategy.setInclude(new String[] {"user_withdraw", "jd_user","jd_user_info","user_finance","user_relation","jd_view_record","user_bill"}); // 需要生成的表
-    //    strategy.setInclude(new String[] { "jd_view_record"}); // 需要生成的表
-
+     //    strategy.setInclude(new String[] {"user_withdraw", "jd_user","jd_user_info","user_finance","user_relation","jd_view_record","user_bill"}); // 需要生成的表
+       // strategy.setInclude(new String[] { "jd_region"}); // 需要生成的表
+     //   strategy.setInclude(new String[] { "vip_card","cheif_card"}); // 需要生成的表
+        strategy.setInclude(new String[] {"jd_brand_ym"}); // 需要生成的表
 
        //  strategy.setInclude(new String[] { "jd_product_copy"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表

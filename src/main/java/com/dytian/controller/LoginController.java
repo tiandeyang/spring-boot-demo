@@ -26,6 +26,8 @@ public class LoginController {
 
     private static final Logger log = LoggerFactory.getLogger(ShiroConfiguration.class);
 
+
+
     @GetMapping(value = "/hello2")
     public String hello() {
         log.info("不登录也可以访问...");
