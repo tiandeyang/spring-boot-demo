@@ -7,6 +7,8 @@ import javax.imageio.ImageIO;
 
 import org.bytedeco.javacpp.opencv_core.IplImage;
 import org.bytedeco.javacv.Frame;
+import org.nutz.http.Http;
+import org.nutz.http.Response;
 
 
 import java.awt.*;
@@ -15,7 +17,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class VideoCapture {
@@ -90,8 +91,11 @@ public class VideoCapture {
 //        System.out.println(LocalDate.now());
 //        System.out.println(LocalTime.now().toSecondOfDay());
 
-
         System.out.println(URLEncoder.encode("sku_name:手机&rows=3&sort=ng_price desc,stock asc&start=0","utf-8"));
+
+        Response response = Http.get("http://select.yuemee.com:8983/solr/yuemee_solr/select?q=sku_name:%E6%89%8B%E6%9C%BA&rows=3&sort=ng_price%20desc,stock%20asc&start=1");
+        System.out.println(response.getContent());
+
 
     }
 

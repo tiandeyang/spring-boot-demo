@@ -87,7 +87,9 @@ public class MpGenerator {
      //    strategy.setInclude(new String[] {"user_withdraw", "jd_user","jd_user_info","user_finance","user_relation","jd_view_record","user_bill"}); // 需要生成的表
        // strategy.setInclude(new String[] { "jd_region"}); // 需要生成的表
      //   strategy.setInclude(new String[] { "vip_card","cheif_card"}); // 需要生成的表
-        strategy.setInclude(new String[] {"jd_brand_ym"}); // 需要生成的表
+  //      strategy.setInclude(new String[] {"jd_brand_ym"}); // 需要生成的表
+        strategy.setInclude(new String[] {"jd_order","jd_order_detail"}); // 需要生成的表
+   //     strategy.setInclude(new String[] {"ym_create_by"}); // 需要生成的表
 
        //  strategy.setInclude(new String[] { "jd_product_copy"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表

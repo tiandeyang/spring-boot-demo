@@ -2,9 +2,17 @@ package com.dytian.controller;
 
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.ConnectionCallback;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  * @author Levin
@@ -34,6 +42,23 @@ public class UserController {
 
     @GetMapping("/find")
     public String find() {
-        return "find.....";
+      //  return "find.....";
+            jdbcTemplate.execute(new ConnectionCallback<Object>() {
+                @Override
+                public Object doInConnection(Connection connection) throws SQLException, DataAccessException {
+                    PreparedStatement preparedStatement = connection.prepareStatement("select * from user_account limit 1");
+                    boolean execute = preparedStatement.execute();
+
+                    return null;
+                }
+            });
+
+    return null;
     }
+
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+
 }
