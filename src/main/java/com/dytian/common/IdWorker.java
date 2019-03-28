@@ -56,7 +56,6 @@ public class IdWorker{
 
     public synchronized long nextId() {
         long timestamp = timeGen();
-
         if (timestamp < lastTimestamp) {
             System.err.printf("clock is moving backwards.  Rejecting requests until %d.", lastTimestamp);
             throw new RuntimeException(String.format("Clock moved backwards.  Refusing to generate id for %d milliseconds",
@@ -71,7 +70,6 @@ public class IdWorker{
         } else {
             sequence = 0;
         }
-
         lastTimestamp = timestamp;
         return ((timestamp - twepoch) << timestampLeftShift) |
                 (datacenterId << datacenterIdShift) |
@@ -94,13 +92,12 @@ public class IdWorker{
     //---------------测试---------------
     public static void main(String[] args) throws InterruptedException {
 
-        CountDownLatch countDownLatch = new CountDownLatch(400);
+        CountDownLatch countDownLatch = new CountDownLatch(1000);
         long startTime = System.currentTimeMillis();
 
         IdWorker worker = new IdWorker(1,1,1);
-
         Set<Long> longs = new HashSet<>();
-        for (int j=0 ; j < 400;j++){
+        for (int j=0 ; j < 1000;j++){
             new Thread(new Worker(countDownLatch,longs,worker)).start();
         }
         countDownLatch.await();
