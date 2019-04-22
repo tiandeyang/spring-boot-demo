@@ -35,7 +35,7 @@ public class MpGenerator {
         String user_name = "root";
         String pwd = "yuemee@456a";
         String url = "47.94.252.198";
-        String dbName = "yuemee";
+        String dbName = "spell";
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
@@ -91,7 +91,7 @@ public class MpGenerator {
     //    strategy.setInclude(new String[] {"jd_order","jd_order_detail"}); // 需要生成的表
    //     strategy.setInclude(new String[] {"ym_create_by"}); // 需要生成的表
 
-        strategy.setInclude(new String[] {"jd_banner"}); // 需要生成的表
+        strategy.setInclude(new String[] {"ym_user_info"}); // 需要生成的表
 
        //  strategy.setInclude(new String[] { "jd_product_copy"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表

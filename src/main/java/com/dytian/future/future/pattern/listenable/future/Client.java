@@ -1,7 +1,6 @@
 package com.dytian.future.future.pattern.listenable.future;
 
 import com.google.common.util.concurrent.*;
-import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
@@ -32,6 +31,7 @@ public class Client {
                 return true;
             }
         });
+
 
 
 
