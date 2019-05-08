@@ -5,6 +5,8 @@ import com.dytian.rpc.IProductService;
 import com.dytian.rpc.Product;
 
 public class ProductService implements IProductService {
+
+
     @Override
     public Product findProductById(long id) {
         Product product = new Product();
@@ -13,4 +15,5 @@ public class ProductService implements IProductService {
         product.setPrice(1.0);
         return product;
     }
+
 }

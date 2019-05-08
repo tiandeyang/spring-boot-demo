@@ -8,9 +8,11 @@ public class BufferTest2 {
 
         String content  = "你好! java NIO-Blocking.";
         CharBuffer charBuffer = CharBuffer.allocate(50);
+
         for (int i = 0;i < content.length();i++){
             charBuffer.put(content.charAt(i));
         }
+
         // 反转buffer 准备读取 buffer内容
         charBuffer.flip();
         while (charBuffer.hasRemaining()){

@@ -46,7 +46,6 @@ public class MpGenerator {
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
         gc.setBaseColumnList(true);// XML columList
-
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         // gc.setMapperName("%sDao");
        //  gc.setXmlName("%sMapper");
@@ -91,7 +90,11 @@ public class MpGenerator {
     //    strategy.setInclude(new String[] {"jd_order","jd_order_detail"}); // 需要生成的表
    //     strategy.setInclude(new String[] {"ym_create_by"}); // 需要生成的表
 
-        strategy.setInclude(new String[] {"ym_ascription"}); // 需要生成的表
+   //     strategy.setInclude(new String[] {"ym_ascription","ym_assemble","ym_interim_assemble","ym_assemble_refund","ym_chance_detail","ym_rebate"}); // 需要生成的表
+   //     strategy.setInclude(new String[] {"ym_ascription","ym_grouper"}); // 需要生成的表
+     //   strategy.setInclude(new String[] {"ym_chance_detail"}); // 需要生成的表
+
+        strategy.setInclude(new String[] {"ym_interim_grouper"}); // 需要生成的表
 
        //  strategy.setInclude(new String[] { "jd_product_copy"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表

@@ -14,7 +14,6 @@ import java.net.Socket;
 
 public class OrderService {
 
-
     public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, InvocationTargetException {
         int prot = 8888;
 

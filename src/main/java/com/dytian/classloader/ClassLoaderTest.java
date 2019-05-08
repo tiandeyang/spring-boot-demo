@@ -15,8 +15,6 @@ public class ClassLoaderTest {
             System.out.println(url.toString());
         }
 
-
-
     }
 
 

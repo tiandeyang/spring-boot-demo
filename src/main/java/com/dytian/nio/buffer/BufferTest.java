@@ -1,13 +1,23 @@
 package com.dytian.nio.buffer;
 
+import com.sun.org.apache.xpath.internal.operations.String;
+
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
+import java.nio.MappedByteBuffer;
 
 public class BufferTest {
 
     public static void main(String[] args) {
 
         ByteBuffer buffer = ByteBuffer.allocate(10);
+
+        buffer.put("t".getBytes());
+        byte b = buffer.get();
+        System.out.println(b);
+
+
+
         System.out.println("capacity=="+buffer.capacity());
         System.out.println("limit==="+buffer.limit());
         System.out.println("position==="+buffer.position());
@@ -25,6 +35,8 @@ public class BufferTest {
         System.out.println("remainning===="+buffer.remaining());
 
         System.out.println(buffer);
+
+
 
 
 

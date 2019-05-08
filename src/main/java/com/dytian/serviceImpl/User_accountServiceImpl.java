@@ -19,7 +19,6 @@ import java.util.List;
 @Service
 public class User_accountServiceImpl extends ServiceImpl<User_accountMapper, User_account> implements IUser_accountService {
 
-
     @Override
     public List<User_account> getAllAccounts() {
         return baseMapper.getAllAccounts();
