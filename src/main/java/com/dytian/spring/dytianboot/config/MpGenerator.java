@@ -94,7 +94,7 @@ public class MpGenerator {
    //     strategy.setInclude(new String[] {"ym_ascription","ym_grouper"}); // 需要生成的表
      //   strategy.setInclude(new String[] {"ym_chance_detail"}); // 需要生成的表
 
-        strategy.setInclude(new String[] {"ym_top_level"}); // 需要生成的表
+        strategy.setInclude(new String[] {"ym_pro_service_bill"}); // 需要生成的表
 
        //  strategy.setInclude(new String[] { "jd_product_copy"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
