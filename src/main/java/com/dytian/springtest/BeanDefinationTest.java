@@ -18,14 +18,11 @@ public class BeanDefinationTest {
 //        StrStr str = (StrStr) beanFactory.getBean("beanName");
 //        int i = str.strStr("asdfasdf", "as");
 //        System.out.println(i);
-
     }
 
     public static void main(String[] args) {
-
 //        BeanDefinationTest beanDefinationTest = new BeanDefinationTest();
 //        beanDefinationTest.defineBean();
-
     }
 
 

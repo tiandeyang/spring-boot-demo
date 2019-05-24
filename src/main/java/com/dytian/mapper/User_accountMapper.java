@@ -1,8 +1,7 @@
 package com.dytian.mapper;
 
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.dytian.entity.User_account;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 import java.util.List;
 
@@ -20,12 +19,12 @@ public interface User_accountMapper extends BaseMapper<User_account> {
 
     List<User_account> getAllAccounts();
 
-    List<User_account> getAllAccountsPage(Pagination pagination);
+  //  List<User_account> getAllAccountsPage(Pagination pagination);
 
     void deleteById(Integer id);
 
 
-    User_account selectUserByName(String user_name, String user_email);
+ //   User_account selectUserByName(String user_name, String user_email);
 
 
 

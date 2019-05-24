@@ -1,7 +1,7 @@
 package com.dytian.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.dytian.entity.User_account;
-import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
 
@@ -22,7 +22,6 @@ public interface IUser_accountService extends IService<User_account> {
 
     void deleteById(Integer id);
 
-    User_account selectUserByName(String user_name,String user_email);
 
 
 

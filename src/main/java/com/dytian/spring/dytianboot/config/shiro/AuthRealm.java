@@ -18,7 +18,7 @@ import java.util.*;
  * @version 2.5.1
  * @since 2018-01-10
  */
-@Configuration
+//@Configuration
 public class AuthRealm extends AuthorizingRealm {
 
     /**

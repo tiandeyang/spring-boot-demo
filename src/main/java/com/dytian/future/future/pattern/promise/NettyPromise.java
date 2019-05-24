@@ -1,9 +1,7 @@
 package com.dytian.future.future.pattern.promise;
 
 
-import io.netty.util.HashedWheelTimer;
 import io.netty.util.concurrent.*;
-import sun.nio.ch.Net;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

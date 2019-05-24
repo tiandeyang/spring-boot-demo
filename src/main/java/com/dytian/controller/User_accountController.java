@@ -1,20 +1,16 @@
 package com.dytian.controller;
 
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.plugins.Page;
 import com.dytian.aspect.SysLog;
 import com.dytian.cache.DataObject;
 import com.dytian.entity.User_account;
+import com.dytian.mapper.User_accountMapper;
 import com.dytian.rabbitmq.Book;
 import com.dytian.service.IUser_accountService;
 import com.dytian.spring.dytianboot.config.RabbitConfig;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import com.github.pagehelper.PageHelper;
 import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -33,16 +29,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
-import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 
 /**
@@ -60,7 +49,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class User_accountController {
 
 
-
     @Autowired
     IUser_accountService iUser_accountService;
 
@@ -72,20 +60,16 @@ public class User_accountController {
         return iUser_accountService.getAllAccounts();
     }
 
+    @Resource
+    User_accountMapper user_accountMapper;
+
     @ApiOperation(value = "分页查询")
     @GetMapping("/page/{pageNumber}")
     @ResponseBody
     public Object page(@PathVariable("pageNumber") Integer pageNumber, @RequestParam(defaultValue = "3") int pageSize ) {
         log.info("pageNumber==="+pageNumber);
         log.info("pageSize==="+pageSize);
-
-        PageHelper.startPage(pageNumber,pageSize);
-        EntityWrapper<User_account> where = new EntityWrapper<>();
-        where.eq("user_id",177);
-
-        Page<User_account> page = new Page<>(pageNumber,pageSize);
-        return iUser_accountService.selectPage(page,where);
-
+        return null;
     }
 
     @ApiOperation(value = "数据更新")
@@ -97,7 +81,7 @@ public class User_accountController {
         user_account.setUser_id(177);
         user_account.setUser_phone("test");
         user_account.setUser_email("tiandeyang52@163.com");
-        iUser_accountService.updateById(user_account);
+      //  iUser_accountService.updateById(user_account);
         if (1 == 1){
             throw new IllegalArgumentException("the phone format is not correct");
         }
@@ -144,10 +128,11 @@ public class User_accountController {
     @ResponseBody
     @Cacheable(value = "user")
     public Object cacheabletest(@PathVariable("user_id") Integer user_id){
-        EntityWrapper<User_account> where = new EntityWrapper<>();
-        where.eq("user_id",user_id);
-        log.info("数据库获取数据");
-        return iUser_accountService.selectOne(where);
+       // EntityWrapper<User_account> where = new EntityWrapper<>();
+      //  where.eq("user_id",user_id);
+       // log.info("数据库获取数据");
+     //   return iUser_accountService.selectOne(where);
+        return null;
     }
 
 

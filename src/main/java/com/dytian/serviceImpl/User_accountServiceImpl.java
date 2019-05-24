@@ -1,11 +1,14 @@
 package com.dytian.serviceImpl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.dytian.entity.User_account;
 import com.dytian.mapper.User_accountMapper;
 import com.dytian.service.IUser_accountService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.Charset;
+import java.nio.charset.spi.CharsetProvider;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -24,7 +27,6 @@ public class User_accountServiceImpl extends ServiceImpl<User_accountMapper, Use
         return baseMapper.getAllAccounts();
     }
 
-
     @Override
     public List<User_account> getAllAccountsPage() {
      //   page.setRecords(baseMapper.getAllAccountsPage(page));
@@ -38,12 +40,7 @@ public class User_accountServiceImpl extends ServiceImpl<User_accountMapper, Use
         baseMapper.deleteById(id);
     }
 
-    @Override
-    public User_account selectUserByName(String user_name, String user_email) {
 
-        return baseMapper.selectUserByName(user_name,user_email);
-
-    }
 
 
 }

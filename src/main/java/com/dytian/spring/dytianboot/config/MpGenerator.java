@@ -1,12 +1,14 @@
 package com.dytian.spring.dytianboot.config;
 
+import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
-import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +37,7 @@ public class MpGenerator {
         String user_name = "root";
         String pwd = "yuemee@456a";
         String url = "47.94.252.198";
+
         String dbName = "spell";
 
         // 全局配置
@@ -57,15 +60,15 @@ public class MpGenerator {
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDbType(DbType.MYSQL);
-        dsc.setTypeConvert(new MySqlTypeConvert() {
-            // 自定义数据库表字段类型转换【可选】
-            @Override
-            public DbColumnType processTypeConvert(String fieldType) {
-                System.out.println("转换类型：" + fieldType);
-                // 注意！！processTypeConvert 存在默认类型转换，如果不是你要的效果请自定义返回、非如下直接返回。
-                return super.processTypeConvert(fieldType);
-            }
-        });
+//        dsc.setTypeConvert(new MySqlTypeConvert() {
+//            // 自定义数据库表字段类型转换【可选】
+//            @Override
+//            public DbColumnType processTypeConvert(String fieldType) {
+//                System.out.println("转换类型：" + fieldType);
+//                // 注意！！processTypeConvert 存在默认类型转换，如果不是你要的效果请自定义返回、非如下直接返回。
+//                return super.processTypeConvert(fieldType);
+//            }
+//        });
 
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername(user_name);
@@ -80,7 +83,7 @@ public class MpGenerator {
 
         strategy.setTablePrefix(new String[]{"tb_", "tsys_"});// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setDbColumnUnderline(true);
+        //strategy.setDbColumnUnderline(true);
         strategy.setEntityColumnConstant(true);
      //   strategy.setCapitalMode(true);
      //    strategy.setInclude(new String[] {"user_withdraw", "jd_user","jd_user_info","user_finance","user_relation","jd_view_record","user_bill"}); // 需要生成的表
@@ -94,7 +97,7 @@ public class MpGenerator {
    //     strategy.setInclude(new String[] {"ym_ascription","ym_grouper"}); // 需要生成的表
      //   strategy.setInclude(new String[] {"ym_chance_detail"}); // 需要生成的表
 
-        strategy.setInclude(new String[] {"ym_pro_service_bill"}); // 需要生成的表
+        strategy.setInclude(new String[] {"ym_information"}); // 需要生成的表
 
        //  strategy.setInclude(new String[] { "jd_product_copy"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
