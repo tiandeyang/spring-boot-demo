@@ -21,6 +21,8 @@ import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.exception.HystrixRuntimeException;
 import org.junit.jupiter.api.Test;
 
+import java.sql.SQLOutput;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -48,8 +50,10 @@ public class CommandThatFailsFast extends HystrixCommand<String> {
 
     public static class UnitTest {
 
+
         @Test
         public void testSuccess() {
+            System.out.println("hello world to use ");
             assertEquals("success", new CommandThatFailsFast(false).execute());
         }
 

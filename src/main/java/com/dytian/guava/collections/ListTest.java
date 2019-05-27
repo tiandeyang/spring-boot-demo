@@ -57,11 +57,6 @@ public class ListTest {
         });
         System.out.println(asm.get("zhaotong"));
 
-
-
-
-
-
     }
 
 }

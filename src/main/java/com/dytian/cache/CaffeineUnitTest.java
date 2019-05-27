@@ -16,8 +16,8 @@ public class CaffeineUnitTest {
 
     @Test
     public void givenCache_whenPopulate_thenValueStored() {
-        Cache<String, DataObject> cache = Caffeine.newBuilder().expireAfterWrite(1, TimeUnit.MINUTES).maximumSize(100).build();
 
+        Cache<String, DataObject> cache = Caffeine.newBuilder().expireAfterWrite(1, TimeUnit.MINUTES).maximumSize(100).build();
 
         String key = "A";
         DataObject dataObject = cache.getIfPresent(key);

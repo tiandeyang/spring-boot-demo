@@ -46,18 +46,18 @@ public class Car {
         return o1.engine.equals(this.engine) && o1.model.equals(this.model);
     }
 
-//    @Override
-//    public int hashCode() {
-//        String str = this.engine + this.model;
-//        return str.hashCode();
-//    }
+    @Override
+    public int hashCode() {
+        String str = this.engine + this.model;
+        return str.hashCode();
+    }
 
     public static void main(String[] args) {
 
         Car car = new Car("fengtian","89");
         Car car1 = new Car("fengtian","89");
 
-        System.out.println(car.equals(car1));
+        System.out.println("60========="+car.equals(car1));
         Set<Car> cars = new HashSet<>();
         cars.add(car);
         cars.add(car1);
