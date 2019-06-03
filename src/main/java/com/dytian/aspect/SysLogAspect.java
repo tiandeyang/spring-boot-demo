@@ -1,7 +1,6 @@
 package com.dytian.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +24,8 @@ public class SysLogAspect {
     @Pointcut("@annotation(com.dytian.aspect.SysLog)")
     public void logPointCut(){}
 
+  //  所以根据上述的分析，我们知道，如果一开始调用的方法没有进行切面增强的话，其内部再调用有切面增强的方法，这时切面是不会生效的，因为此时调用有切面增强方法的类不是代理类，而是被代理类本身。
+
     @Around("logPointCut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
 
@@ -35,7 +35,6 @@ public class SysLogAspect {
         long timespan = System.currentTimeMillis() - startTime;
 
         saveLog(joinPoint,timespan);
-
 
         return null;
 

@@ -1,10 +1,10 @@
 package com.dytian.guava.event;
 
 
-import com.google.common.cache.CacheBuilder;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.google.common.reflect.TypeToken;
+import lombok.val;
 import org.nutz.json.Json;
 
 import java.util.Set;
@@ -43,10 +43,10 @@ public class EventBusTest {
         eventBus.register(new Listener());
         eventBus.register(new EventListener());
 
-        eventBus.post("新鲜出炉的数据哦..");
-        Event loginEvent = new LoginEvent("9999");
-        eventBus.post(loginEvent);
-        eventBus.post(new RegisterEvent("18363861928"));
+        EventBusTest.eventBus.post("新鲜出炉的数据哦..");
+        Event loginEvent = new LoginEvent("logEvent.........");
+        EventBusTest.eventBus.post(loginEvent);
+        EventBusTest.eventBus.post(new RegisterEvent("18363861928"));
         Set<Class<?>> classes = (Set<Class<?>>) TypeToken.of(loginEvent.getClass()).getTypes().rawTypes();
         classes.forEach(klazz-> System.out.println(klazz.getName()));
 

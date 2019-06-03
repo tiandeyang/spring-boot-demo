@@ -60,8 +60,6 @@ public class User_accountController {
         return iUser_accountService.getAllAccounts();
     }
 
-    @Resource
-    User_accountMapper user_accountMapper;
 
     @ApiOperation(value = "分页查询")
     @GetMapping("/page/{pageNumber}")

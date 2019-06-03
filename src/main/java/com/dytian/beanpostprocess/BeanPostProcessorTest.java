@@ -28,6 +28,7 @@ public class BeanPostProcessorTest implements BeanPostProcessor {
 //        bean1.setAge(20);
 //        int age = bean1.getAge();
 //        System.out.println("age=after==="+age);
+
         return bean;
     }
 }
