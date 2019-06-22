@@ -1,6 +1,5 @@
 package com.dytian.utils;
 
-import com.spire.ms.System.Collections.IList;
 import com.spire.pdf.PdfDocument;
 
 import javax.imageio.ImageIO;
@@ -29,9 +28,7 @@ public class Pdf2Image {
             ImageIO.write(image, "PNG", file);
         }
         doc.close();
-
     }
-
 
 }
 
