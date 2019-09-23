@@ -10,6 +10,7 @@ public class FinalTest {
         inner.setName("halle");
         Inner secondTime = new Inner("secondi");
       //  inner = secondTime;   final 修饰的 引用类型变量是不可更换的  但是其值可以改变
+        System.out.println("hello");
         System.out.println(Json.toJson(inner));
     }
 
