@@ -19,6 +19,7 @@ public class SoftReferencesTest {
         String yes = new String("123");
         WeakReference<String> weakReference = new WeakReference<>(yes);
         yes = null;
+
         System.gc();
         System.out.println(weakReference.get());
 

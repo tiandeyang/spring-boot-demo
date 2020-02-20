@@ -36,6 +36,9 @@ public class ThumbnailatorTest {
      * @throws IOException
      */
     private void test1() throws IOException {
+
+        System.out.println("hello world to gain the core");
+
         /*
          * size(width,height) 若图片横比200小，高比300小，不变
          * 若图片横比200小，高比300大，高缩小到300，图片比例不变 若图片横比200大，高比300小，横缩小到200，图片比例不变
@@ -43,6 +46,8 @@ public class ThumbnailatorTest {
          */
         Thumbnails.of("images/test.jpg").size(200, 300).toFile("C:/image_200x300.jpg");
         Thumbnails.of("images/test.jpg").size(2560, 2048).toFile("C:/image_2560x2048.jpg");
+
+
     }
 
     /**

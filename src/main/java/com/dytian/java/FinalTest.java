@@ -15,8 +15,8 @@ public class FinalTest {
 
 
     static class Inner{
-        String name = "my anme";
 
+        String name = "my anme";
         public Inner(String name) {
             this.name = name;
         }
@@ -27,6 +27,7 @@ public class FinalTest {
         public void setName(String name) {
             this.name = name;
         }
+
     }
 
 
