@@ -30,6 +30,7 @@ public class MpGenerator {
      * </p>
      */
     public static void main(String[] args) {
+
         AutoGenerator mpg = new AutoGenerator();
         // 选择 freemarker 引擎，默认 Veloctiy
        // mpg.setTemplateEngine(new FreemarkerTemplateEngine());
@@ -38,7 +39,7 @@ public class MpGenerator {
         String pwd = "acCr*%345SP";
         String url = "rm-2ze8ct785r6b0m4nklo.mysql.rds.aliyuncs.com";
 
-        String dbName = "pintuantest";
+        String dbName = "pintuan";
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
@@ -96,10 +97,7 @@ public class MpGenerator {
    //     strategy.setInclude(new String[] {"ym_ascription","ym_grouper"}); // 需要生成的表
      //   strategy.setInclude(new String[] {"ym_chance_detail"}); // 需要生成的表
 
-
-
-
-        strategy.setInclude(new String[] {"ym_user_address"}); // 需要生成的表
+        strategy.setInclude(new String[] {"ym_view_record","ym_ranking","ym_coupons"}); // 需要生成的表
 
        //  strategy.setInclude(new String[] { "jd_product_copy"}); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表

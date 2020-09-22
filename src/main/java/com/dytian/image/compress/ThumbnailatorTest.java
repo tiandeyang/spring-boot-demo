@@ -147,11 +147,15 @@ public class ThumbnailatorTest {
      * @throws IOException
      */
     private void test8() throws IOException {
+        // hello world to gain the core of spirit of cansol to do gain the spirit spirit
+        // hello world to gain the core of sprite of cansole ot do gian the sprite sprint of gorgurs to do spirit
+        // cnasel to
         /**
          * toOutputStream(流对象)
          */
         OutputStream os = new FileOutputStream("C:/image_1280x1024_OutputStream.png");
         Thumbnails.of("images/test.jpg").size(1280, 1024).toOutputStream(os);
+        // spirit of g
     }
 
     /**
@@ -163,6 +167,7 @@ public class ThumbnailatorTest {
         /**
          * asBufferedImage() 返回BufferedImage
          */
+
         BufferedImage thumbnail = Thumbnails.of("images/test.jpg").size(1280, 1024).asBufferedImage();
         ImageIO.write(thumbnail, "jpg", new File("C:/image_1280x1024_BufferedImage.jpg"));
     }
