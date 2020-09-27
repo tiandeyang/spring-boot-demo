@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@Configuration
+//@Configuration
 public class RabbitConfig {
 
     public static final String DEFAULT_BOOK_QUEUE = "default_book_queue";

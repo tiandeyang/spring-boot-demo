@@ -22,8 +22,8 @@ public class Client  {
                 return data;
             }
         });
-        manageFiled.setBeijingTime(util.getTime());
 
+        manageFiled.setBeijingTime(util.getTime());
         System.out.println(Json.toJson(manageFiled));
 
 

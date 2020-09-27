@@ -26,7 +26,7 @@ public class NettyPromise {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(8*1000);
+                    Thread.currentThread().sleep(8*1000);
                     System.out.println("setSuccess is done !");
                     promise.setSuccess("result is ok");
                 } catch (InterruptedException e) {
@@ -43,9 +43,12 @@ public class NettyPromise {
             }
         });
 
-        System.out.println("....shut_down.....");
+
        // eventExecutors.shutdownGracefully();
         executor.shutdown();
+        System.out.println("....shut_down.....");
+     //   eventExecutors.shutdownGracefully();
+
 
 
 

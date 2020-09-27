@@ -17,6 +17,9 @@ public class CaffeineUnitTest {
     @Test
     public void givenCache_whenPopulate_thenValueStored() {
 
+
+        // 静态变量属于 类;
+
         Cache<String, DataObject> cache = Caffeine.newBuilder().expireAfterWrite(1, TimeUnit.MINUTES).maximumSize(100).build();
 
         String key = "A";
@@ -26,11 +29,15 @@ public class CaffeineUnitTest {
 
         dataObject = cache.get(key, k -> DataObject.get("Data for A"));
 
+
         assertNotNull(dataObject);
         assertEquals("Data for A", dataObject.getData());
 
         cache.put(key, dataObject);
         dataObject = cache.getIfPresent(key);
+
+        // 内存可见性保证
+        // 内存可见性保证
 
         assertNotNull(dataObject);
 

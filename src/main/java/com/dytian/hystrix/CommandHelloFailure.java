@@ -24,7 +24,7 @@ public class CommandHelloFailure extends HystrixCommand<String> {
             Thread.currentThread().sleep(15*1000);
             throw new RuntimeException("this command always fails");
         } catch (InterruptedException e) {
-            e.printStackTrace();
+        //    e.printStackTrace();
         }
         return "null";
     }

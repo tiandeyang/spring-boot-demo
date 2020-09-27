@@ -18,7 +18,7 @@ public class RealData implements Callable {
 
     @Override
     public Object call() throws Exception {
-        Thread.currentThread().sleep(2000);
+        Thread.currentThread().sleep(5000);
         return data;
     }
 }

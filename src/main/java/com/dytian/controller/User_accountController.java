@@ -57,6 +57,9 @@ public class User_accountController {
     @GetMapping("/hello")
     @ResponseBody
     public Object hello() {
+        System.out.println("hello world to do things ok;");
+        System.out.println("hello world to do things ok;");
+        System.out.println("hello world to do things ok;");
         return iUser_accountService.getAllAccounts();
     }
 
@@ -151,7 +154,7 @@ public class User_accountController {
     @Autowired
     private AmqpTemplate amqpTemplate;
 
-    @Autowired
+  //  @Autowired
     RabbitTemplate rabbitTemplate;
 
 

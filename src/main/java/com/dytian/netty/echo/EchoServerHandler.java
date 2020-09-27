@@ -17,9 +17,10 @@ public class EchoServerHandler extends SimpleChannelInboundHandler<UnixTime> {
 //        ctx.write(msg);
 //    }
 
+
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, UnixTime unixTime) throws Exception {
-        ctx.writeAndFlush(unixTime);
+     //   ctx.writeAndFlush(unixTime);
         System.out.println(Json.toJson(unixTime));
     }
 

@@ -10,15 +10,27 @@ public class Client  {
 
 
     public Data request(String data){
+
         FutureData futureData = new FutureData();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 futureData.setRealData(new RealData(data));
-            //    futureData.addOnCompleteListener(Client.this);
             }
         }).start();
         return futureData;
+
+
+//        RealData futureData = new RealData(data);
+////        new Thread(new Runnable() {
+////            @Override
+////            public void run() {
+////                futureData.setRealData(new RealData(data));
+////                futureData.addOnCompleteListener(Client.this);
+////            }
+////        }).start();
+
+ //       return futureData;
 
     }
 
@@ -29,12 +41,13 @@ public class Client  {
         dytian.addOnCompleteListener(new OnCompleteListener() {
             @Override
             public void onComplete(String data) {
-                System.out.println("data==="+data);
+                System.out.println("OnComplete====data==="+data);
             }
         });
+
 //        System.out.println("阻塞...");
 //        String data = dytian.getData();
-//
+
 //        System.out.println("阻塞结束 打印结果如下:");
 //        System.out.println(data);
 

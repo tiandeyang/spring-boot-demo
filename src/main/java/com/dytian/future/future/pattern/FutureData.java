@@ -9,7 +9,6 @@ package com.dytian.future.future.pattern;
 public class FutureData implements Data {
 
     RealData realData = null;
-
     private volatile boolean isReady = false;
 
     public synchronized void setRealData(RealData realData){

@@ -19,8 +19,6 @@ public class DiscardServerHandler  extends ChannelInboundHandlerAdapter {
         }finally {
             ReferenceCountUtil.release(msg);
         }
-
-
     }
 
 
@@ -29,6 +27,6 @@ public class DiscardServerHandler  extends ChannelInboundHandlerAdapter {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
         ctx.close();
-
     }
+
 }

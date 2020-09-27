@@ -33,13 +33,9 @@ public final class EchoServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-
-
                             socketChannel.pipeline().addLast(new ObjectDecoder(1024*1024,ClassResolvers.weakCachingResolver(this.getClass().getClassLoader())));
                             socketChannel.pipeline().addLast(new ObjectEncoder());
                             socketChannel.pipeline().addLast(serverHandler);
-
-
 
                         }
                     });

@@ -23,16 +23,19 @@ public class Client {
         FutureTask futureTask = new FutureTask(new RealData("dytain"));
         ExecutorService executor = Executors.newFixedThreadPool(1);
 
+
         executor.submit(futureTask);
 
-        Thread.sleep(1000);
+        Thread.sleep(500);
         System.out.println("time is over ;time is out.................");
 
-        // wait 1 second more,  until the future finished
+        // wait  until the future finished ; 阻塞
         Object o = futureTask.get();
+
         System.out.println("future task is finished ");
         System.out.println(Json.toJson(o));
 
+        executor.shutdown();
 
     }
 

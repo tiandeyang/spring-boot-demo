@@ -26,10 +26,11 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<UnixTime> {
 
 
 
-//    @Override
-//    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-//        ctx.write(msg);
-//    }
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        System.out.println("channelRead===="+Json.toJson(msg));
+        ctx.write(msg);
+    }
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, UnixTime unixTime) throws Exception {

@@ -22,6 +22,7 @@ import java.io.Serializable;
 public class User_account extends Model<User_account> {
 
 
+
     private static final long serialVersionUID = 1L;
 
     /**

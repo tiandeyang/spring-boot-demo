@@ -13,7 +13,7 @@ public class Worker implements Runnable {
     @Override
     public void run() {
         Integer integer = qunee.get();
-        System.out.println("int===="+integer--);
+  //      System.out.println("int===="+integer--);
         qunee.set(integer);
         System.out.println(Thread.currentThread().getName()+ "===after=="+qunee.get());
     }
@@ -21,7 +21,7 @@ public class Worker implements Runnable {
 
     public static void main(String[] args) {
        for (int i=0;i < 20;i++){
-           new Thread(new Worker()).start();
+           new Thread(new Worker(),"Thread-"+i).start();
        }
 
     }
