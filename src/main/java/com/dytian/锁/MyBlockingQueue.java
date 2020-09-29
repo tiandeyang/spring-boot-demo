@@ -6,6 +6,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class MyBlockingQueue<E> {
 
+
+
     int size;//阻塞队列最大容量
 
     ReentrantLock lock = new ReentrantLock();
@@ -13,7 +15,7 @@ public class MyBlockingQueue<E> {
     // 经验非常丰富吧 其实 到最后 还是没有太多的浪费感情的事情
     LinkedList<E> list=new LinkedList<>();//队列底层实现
 
-
+    // 信息对象 服务获取话有啥呢
     Condition notFull = lock.newCondition();//队列满时的等待条件
     Condition notEmpty = lock.newCondition();//队列空时的等待条件
 
