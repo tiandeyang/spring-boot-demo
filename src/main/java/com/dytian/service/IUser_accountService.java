@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.dytian.entity.User_account;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -19,6 +20,8 @@ public interface IUser_accountService extends IService<User_account> {
     List<User_account> getAllAccounts();
 
     List<User_account> getAllAccountsPage();
+
+
 
     void deleteById(Integer id);
 

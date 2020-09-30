@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.dytian.entity.User_account;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -18,6 +19,10 @@ public interface User_accountMapper extends BaseMapper<User_account> {
 
 
     List<User_account> getAllAccounts();
+
+    int getMaxId();
+
+    void updateId();
 
   //  List<User_account> getAllAccountsPage(Pagination pagination);
 

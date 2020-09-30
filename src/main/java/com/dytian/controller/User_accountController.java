@@ -4,9 +4,11 @@ package com.dytian.controller;
 import com.dytian.aspect.SysLog;
 import com.dytian.cache.DataObject;
 import com.dytian.entity.User_account;
+import com.dytian.idGenerater.IdGenerater;
 import com.dytian.mapper.User_accountMapper;
 import com.dytian.rabbitmq.Book;
 import com.dytian.service.IUser_accountService;
+import com.dytian.service.IdGenerator;
 import com.dytian.spring.dytianboot.config.RabbitConfig;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
@@ -51,6 +53,60 @@ public class User_accountController {
 
     @Autowired
     IUser_accountService iUser_accountService;
+
+    @Autowired
+    IdGenerater idGenerater;
+
+
+
+    @GetMapping("/idGenerator")
+    @ResponseBody
+    public Object idGenerator() {
+
+        long startTime = System.currentTimeMillis();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                for (int i = 0;i < 100000;i++){
+
+                    int finalI = i;
+                    long generator = idGenerater.generator();
+                    if (finalI > 99995){
+                        System.out.println("id================="+generator);
+                   }
+                }
+
+            }
+        }).start();
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                for (int i = 0;i < 100000;i++){
+
+                    int finalI = i;
+                    long generator = idGenerater.generator();
+                    if (finalI > 99995){
+                        System.out.println("id================="+generator);
+                    }
+                }
+            }
+        }).start();
+
+
+
+        Thread.yield();
+        long span = System.currentTimeMillis() - startTime;
+        System.out.println("十万次消耗时间==="+span);
+        return span;
+
+    }
+
+
 
 
     @ApiOperation(value = "用户查询")

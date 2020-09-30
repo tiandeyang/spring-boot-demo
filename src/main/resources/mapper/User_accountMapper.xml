@@ -28,6 +28,15 @@
         select * from user_account
     </select>
 
+
+    <select id="getMaxId" resultType="int" >
+        select id from yuemee_sequ order by id desc limit 1
+    </select>
+
+    <select id="updateId"  >
+        REPLACE INTO yuemee_sequ (sub_ip) VALUES ('192.168.22.10')
+    </select>
+
     <delete id="deleteById"  parameterType="java.lang.Integer">
         delete from user_account where user_id = #{id}
     </delete>

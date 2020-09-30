@@ -1,10 +1,7 @@
 package com.dytian.service;
 
-import com.dytian.mapper.User_accountMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -20,7 +17,6 @@ public class IdGenerator {
 
 
     private SequenceIdFetch sequenceIdFetch;
-
 
     public SequenceIdFetch getSequenceIdFetch() {
         return sequenceIdFetch;
@@ -51,6 +47,7 @@ public class IdGenerator {
             this.maxid = maxid;
             this.maxid_ahead = maxid_ahead;
         }
+
         public long getMaxid() {
             return maxid;
         }
