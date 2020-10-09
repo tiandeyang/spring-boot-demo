@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RestController
 public class LoginController {
     // shiro
-
+    // redis
   /*  @RequiresGuest 代表无需认证即可访问，同理的就是 /path=anon
     @RequiresAuthentication 需要认证，只要登录成功后就允许你操作
     @RequiresPermissions 需要特定的权限，没有则抛出 AuthorizationException
@@ -27,12 +27,13 @@ public class LoginController {
     private static final Logger log = LoggerFactory.getLogger(ShiroConfiguration.class);
 
 
-
     @GetMapping(value = "/hello2")
     public String hello() {
         log.info("不登录也可以访问...");
         return "hello...";
     }
+
+
 
     @GetMapping(value = "/index")
     public String index() {

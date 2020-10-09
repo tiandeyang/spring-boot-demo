@@ -24,7 +24,9 @@ import org.springframework.amqp.support.converter.AbstractJavaTypeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +34,8 @@ import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 
 
@@ -50,34 +54,35 @@ import java.util.concurrent.ExecutorService;
 @Api(tags = "用户API")
 public class User_accountController {
 
-
     @Autowired
     IUser_accountService iUser_accountService;
+
 
     @Autowired
     IdGenerater idGenerater;
 
 
-
     @GetMapping("/idGenerator")
     @ResponseBody
-    public Object idGenerator() {
+    public Object idGenerator() throws InterruptedException {
 
         long startTime = System.currentTimeMillis();
 
+        CountDownLatch latch = new CountDownLatch(2);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-
+                System.out.println("11111111111111111111111111");
                 for (int i = 0;i < 100000;i++){
-
                     int finalI = i;
                     long generator = idGenerater.generator();
                     if (finalI > 99995){
+                        System.out.println("i=================="+i);
                         System.out.println("id================="+generator);
                    }
                 }
-
+                latch.countDown();
             }
         }).start();
 
@@ -85,23 +90,24 @@ public class User_accountController {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
+                System.out.println("222222222222222222222222222");
                 for (int i = 0;i < 100000;i++){
 
                     int finalI = i;
                     long generator = idGenerater.generator();
                     if (finalI > 99995){
+                        System.out.println("i=================="+i);
                         System.out.println("id================="+generator);
                     }
                 }
+                latch.countDown();
             }
         }).start();
 
-
-
-        Thread.yield();
+        latch.await();
         long span = System.currentTimeMillis() - startTime;
         System.out.println("十万次消耗时间==="+span);
+
         return span;
 
     }
@@ -157,15 +163,22 @@ public class User_accountController {
 
 
 
+    //@Autowired
+    //private StringRedisTemplate redisTemplate;
+
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
 
     @ApiOperation(value = "redis测试-赋值")
     @GetMapping("/setredis/{value}")
     @ResponseBody
     public Object redistest(@PathVariable("value") String value){
-        redisTemplate.opsForValue().set("testkey",value);
+       redisTemplate.opsForValue().set("testkey",value);
+
+
+
+
         return "success";
     }
 
@@ -175,7 +188,23 @@ public class User_accountController {
     @GetMapping("/getredis")
     @ResponseBody
     public Object fromredis(){
-        String testkey = redisTemplate.opsForValue().get("testkey");
+        String testkey = redisTemplate.opsForValue().get("testkey").toString();
+
+
+        redisTemplate.opsForZSet().add("orders",1,1);
+        redisTemplate.opsForZSet().add("orders",3,3);
+        redisTemplate.opsForZSet().add("orders",2,2);
+
+        Set orders = redisTemplate.opsForZSet().rangeByScore("orders", 1, 4);
+
+        System.out.println("orders==="+Json.toJson(orders));
+
+        Set<Integer> orders1 = redisTemplate.opsForZSet().reverseRangeByScore("orders", 1, 4);
+        System.out.println("reverse_orders====="+Json.toJson(orders1));
+
+        Set<ZSetOperations.TypedTuple<Integer>> orders2 = redisTemplate.opsForZSet().reverseRangeByScoreWithScores("orders", 1, 4);
+        System.out.println("reverse_orders_with_scores=="+Json.toJson(orders2));
+
         return testkey;
     }
 

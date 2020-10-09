@@ -2,11 +2,8 @@ package com.dytian.idGenerater;
 
 
 import com.dytian.aspect.cache.SpringUtil;
-import org.nutz.json.Json;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
@@ -54,7 +51,7 @@ public class IdGenerater implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        // get the core of china;of spirit of china;
         long maxid = poll.getMaxid();
         long maxid_ahead = poll.getMaxid_ahead();
 
@@ -107,7 +104,7 @@ public class IdGenerater implements Runnable{
 
     @Override
     public void run() {
-        //System.out.println("started work................");
+
         while (true){
             IdOpjo idOpjo = resetMaxId();
             try {

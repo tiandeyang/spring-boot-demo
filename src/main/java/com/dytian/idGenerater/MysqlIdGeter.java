@@ -11,7 +11,6 @@ public class MysqlIdGeter implements IdGeter {
     @Resource
     User_accountMapper user_accountMapper;
 
-
     @Override
     public Integer getId() {
         int maxId = user_accountMapper.getMaxId();
