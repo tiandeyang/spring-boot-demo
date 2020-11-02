@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 图片上传的几种方式
@@ -46,15 +48,21 @@ public class FileUploadController {
         result.put("contentType", file.getContentType());
         result.put("fileName", file.getOriginalFilename());
         result.put("fileSize", file.getSize() + "");
+
         return result;
+
     }
 
     @PostMapping("/upload2")
     @ResponseBody
     public List<Map<String, String>> upload2(@RequestParam("file") MultipartFile[] files) throws IOException {
+
         if (files == null || files.length == 0) {
             return null;
         }
+
+        int length = files.length;
+        // 概念扩充 含义多样性
         List<Map<String, String>> results = new ArrayList<>();
         for (MultipartFile file : files) {
             // TODO Spring Mvc 提供的写入方式
@@ -65,7 +73,6 @@ public class FileUploadController {
             map.put("fileSize", file.getSize() + "");
             results.add(map);
         }
-
         return results;
     }
 

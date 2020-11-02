@@ -190,20 +190,23 @@ public class User_accountController {
     public Object fromredis(){
         String testkey = redisTemplate.opsForValue().get("testkey").toString();
 
-
+        // 斐波那契 数列
         redisTemplate.opsForZSet().add("orders",1,1);
         redisTemplate.opsForZSet().add("orders",3,3);
         redisTemplate.opsForZSet().add("orders",2,2);
 
+
+
         Set orders = redisTemplate.opsForZSet().rangeByScore("orders", 1, 4);
 
         System.out.println("orders==="+Json.toJson(orders));
-
         Set<Integer> orders1 = redisTemplate.opsForZSet().reverseRangeByScore("orders", 1, 4);
         System.out.println("reverse_orders====="+Json.toJson(orders1));
 
         Set<ZSetOperations.TypedTuple<Integer>> orders2 = redisTemplate.opsForZSet().reverseRangeByScoreWithScores("orders", 1, 4);
         System.out.println("reverse_orders_with_scores=="+Json.toJson(orders2));
+
+        // haiyoushui
 
         return testkey;
     }

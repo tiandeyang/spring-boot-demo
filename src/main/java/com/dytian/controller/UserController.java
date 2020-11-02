@@ -42,19 +42,20 @@ public class UserController {
 
     @GetMapping("/find")
     public String find() {
-      //  return "find.....";
-            jdbcTemplate.execute(new ConnectionCallback<Object>() {
-                @Override
-                public Object doInConnection(Connection connection) throws SQLException, DataAccessException {
-                    PreparedStatement preparedStatement = connection.prepareStatement("select * from user_account limit 1");
-                    boolean execute = preparedStatement.execute();
+        
+        Object execute = jdbcTemplate.execute(new ConnectionCallback<Object>() {
+            @Override
+            public Object doInConnection(Connection connection) throws SQLException, DataAccessException {
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from user_account limit 1");
+                boolean execute = preparedStatement.execute();
+                return null;
+            }
+        });
 
-                    return null;
-                }
-            });
+        return null;
 
-    return null;
     }
+
 
 
     @Autowired
