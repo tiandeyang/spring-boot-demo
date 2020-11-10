@@ -20,7 +20,6 @@ public class IdGenerater implements Runnable{
     private static final ArrayBlockingQueue<IdOpjo> splitQuene = new ArrayBlockingQueue(64);
 
     private static Thread idWorker ;
-   // private static IdGenerater  idGenerater ;
 
 
 //    @PostConstruct //通过@PostConstruct实现初始化bean之前进行的操作
@@ -29,8 +28,8 @@ public class IdGenerater implements Runnable{
 //        // 初使化时将已静态化的testService实例化
 //    }
 
-
     public IdGenerater(){
+        
         idWorker = new Thread(this);
         idWorker.start();
     }
@@ -45,6 +44,7 @@ public class IdGenerater implements Runnable{
         if (curr < MAXID){
             return curr;
         }
+
         IdOpjo poll = null;
         try {
             poll = splitQuene.poll(3, TimeUnit.SECONDS);
@@ -59,6 +59,7 @@ public class IdGenerater implements Runnable{
         MAXID = maxid_ahead;
 
         return atomicLong.getAndIncrement();
+
     }
 
     private int getMaxId(){
@@ -73,7 +74,8 @@ public class IdGenerater implements Runnable{
         long max = (maxId + 1) * STEP;
         return new IdOpjo(maxStep, max);
     }
-    // u
+
+
 
     class IdOpjo{
 
@@ -83,6 +85,7 @@ public class IdGenerater implements Runnable{
             this.maxid = maxid;
             this.maxid_ahead = maxid_ahead;
         }
+
         public long getMaxid() {
             return maxid;
         }
@@ -90,7 +93,6 @@ public class IdGenerater implements Runnable{
         public void setMaxid(long maxid) {
             this.maxid = maxid;
         }
-
 
         public long getMaxid_ahead() {
             return maxid_ahead;

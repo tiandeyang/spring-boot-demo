@@ -6,13 +6,11 @@ package com.dytian.testcode.leetcode;
  */
 public class MinSubArrayLen {
 
-
-
     public int minSubArrayLen(int s, int[] nums) {
         //2,3,1,2,4,3
-
         // 退出循环的条件   最小长度 为 1  则退出; 循环结束则退出;
         int length = nums.length;
+
         int rightIndex  = 0;
         int leftIndex = -1;
         int minLen = length;
@@ -21,6 +19,8 @@ public class MinSubArrayLen {
         if (length == 0){
             return 0;
         }
+
+
         while (true){
             if (rightIndex > length - 1){
                 break;
@@ -31,6 +31,7 @@ public class MinSubArrayLen {
                 flag = true;
                 break;
             }
+
             sum = sum + currVal;
             if (sum >= s){
                 flag = true;

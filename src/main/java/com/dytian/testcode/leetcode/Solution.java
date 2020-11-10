@@ -71,12 +71,13 @@ class Solution {
         }
         return total;
     }
-
-
+    
     public static void main(String[] args) {
         Solution solution = new Solution();
         int i = solution.pivotIndex(new int[]{-1, -1, -1, -1, -1, 0});
         System.out.println(i);
     }
+
+
 
 }

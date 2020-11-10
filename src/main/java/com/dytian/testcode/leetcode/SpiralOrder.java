@@ -48,6 +48,8 @@ public class SpiralOrder {
             return integers;
         }
 
+
+
         container = new HashMap<>(length * matrix[0].length);
         ArrayList<Integer> integers = new ArrayList<>(length * matrix[0].length);
         total = length * matrix[0].length;

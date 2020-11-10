@@ -17,21 +17,23 @@ public class Client {
         IProductService rpc = (IProductService) rpc(IProductService.class);
         Product productById = rpc.findProductById(100);
         System.out.println(Json.toJson(productById));
-
+        
     }
 
 
     public static Object rpc(final Class<?> klass){
 
        return Proxy.newProxyInstance(klass.getClassLoader(), new Class[]{klass}, new InvocationHandler() {
+
             @Override
             public Object invoke(Object o, Method method, Object[] args) throws Throwable {
 
-               Socket socket = new Socket("127.0.0.1",8888);
+                Socket socket = new Socket("127.0.0.1",8888);
 
                 String name = method.getName();
                 String classNmae = klass.getName();
                 Class<?>[] parameterTypes = method.getParameterTypes();
+
                 System.out.println(String.format("className==%s---methodName===%s---parainType===%s",classNmae,name,Json.toJson(parameterTypes)));
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                 objectOutputStream.writeUTF(classNmae);

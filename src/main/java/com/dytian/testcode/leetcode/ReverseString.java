@@ -8,6 +8,7 @@ public class ReverseString {
         if (s.length() == 0){
             return "";
         }
+
         char[] chars = s.toCharArray();
         System.out.println(chars.length);
         int length = chars.length;
@@ -36,6 +37,7 @@ public class ReverseString {
         if (s.length() == 0){
             return "";
         }
+
         char[] chars = s.toCharArray();
         int length = chars.length;
         int startIndex = 0;

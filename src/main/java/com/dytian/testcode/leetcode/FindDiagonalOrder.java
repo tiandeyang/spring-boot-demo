@@ -12,7 +12,6 @@ public class FindDiagonalOrder {
     int n = 0;
     int  arrowDerection = 0;
 
-
     /**
      *
      * @param matrix
